@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #63cde5;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #4ea8c1;
+    border: 1px solid #63cde5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+}
+
+.slot-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+    margin-top: 20px;
+}
+
+.slot {
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.red {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+.orange {
+    background-color: #ffa07a;
+    color: #333;
+}
+
+.green {
+    background-color: #00ff00;
+    color: #333;
+}
+   </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select Time and Slot</h1>
+        <form>
+            <label for="date">Select a Date:</label>
+            <input type="date" id="date" name="date">
+            <label for="slot">Select a Slot:</label>
+            <select id="slot" name="slot">
+                <option value="slot1">Slot 1 (9:00 AM - 10:00 AM)</option>
+                <option value="slot2">Slot 2 (10:00 AM - 11:00 AM)</option>
+                <option value="slot3">Slot 3 (11:00 AM - 12:00 PM)</option>
+                <option value="slot4">Slot 4 (12:00 PM - 1:00 PM)</option>
+                <option value="slot5">Slot 5 (1:00 PM - 2:00 PM)</option>
+                <option value="slot6">Slot 6 (2:00 PM - 3:00 PM)</option>
+                <option value="slot7">Slot 7 (3:00 PM - 4:00 PM)</option>
+                <option value="slot8">Slot 8 (4:00 PM - 5:00 PM)</option>
+                <option value="slot9">Slot 9 (5:00 PM - 6:00 PM)</option>
+                <option value="slot10">Slot 10 (6:00 PM - 7:00 PM)</option>
+                <option value="slot11">Slot 11 (7:00 PM - 8:00 PM)</option>
+                <option value="slot12">Slot 12 (8:00 PM - 9:00 PM)</option>
+                <option value="slot12">Slot 12 (9:00 PM - 10:00 PM)</option>
+                <option value="slot13">Slot 13 (10:00 PM - 11:00 PM)</option>
+                <option value="slot14">Slot 14 (11:00 PM - 12:00 AM)</option>
+                <option value="slot15">Slot 15 (12:00 AM - 1:00 AM)</option>
+                <option value="slot16">Slot 16 (1:00 AM - 2:00 AM)</option>
+                <option value="slot17">Slot 17 (2:00 AM - 3:00 AM)</option>
+                <option value="slot18">Slot 18 (3:00 AM - 4:00 AM)</option>
+                <option value="slot19">Slot 19 (4:00 AM - 5:00 AM)</option>
+                <option value="slot20">Slot 20 (5:00 AM- 6:00 AM)</option>
+                <option value="slot21">Slot 21 (6:00 AM - 7:00 AM)</option>
+                <option value="slot22">Slot 22 (7:00 AM - 8:00 AM)</option>
+                <option value="slot23">Slot 23 (8:00 AM - 9:00 AM)</option>
+            </select>
+        </form>
+        <button id="view-button">View Slots</button>
+        <div id="slot-status" style="display: none;">
+            <h2>Slot Status</h2>
+            <div class="slot-grid">
+                <div class="slot red">Already Booked</div>
+                <div class="slot red">Already Booked</div>
+                <div class="slot red">Already Booked</div>
+                <div class="slot red">Already Booked</div>
+                <div class="slot red">Already Booked</div>
+                <div class="slot orange">Free after 15 minutes</div>
+                <div class="slot orange">Free after 10 minutes</div>
+                <div class="slot orange">Free after 5 minutes</div>
+                <div class="slot green">Free</div>
+                <div class="slot green">Free</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const viewButton = document.getElementById('view-button');
+
+viewButton.addEventListener('click', () => {
+    // Get the slot status element
+    const slotStatus = document.getElementById('slot-status');
+
+    // Show the slot status
+    slotStatus.style.display = 'block';
+});
+    </script>
+</body>
+</html>

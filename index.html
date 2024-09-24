@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #13afe8;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    background-color: #189fdd;
+    border: 1px solid #189fdd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+}
+
+.login-form {
+    width: 30%;
+    margin: 50px auto;
+    padding: 50px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+    width: 60%;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.input-group input[type="text"], .input-group input[type="tel"], .input-group select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+   </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-form">
+            <h2>Login to Your Account</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="mobile-number">Mobile Number:</label>
+                    <input type="tel" id="mobile-number" name="mobile-number" required>
+                </div>
+                <div class="input-group">
+                    <label for="vehicle-number">Vehicle Number:</label>
+                    <input type="text" id="vehicle-number" name="vehicle-number" required>
+                </div>
+                <div class="input-group">
+                    <label for="vehicle-type">Vehicle Type:</label>
+                    <select id="vehicle-type" name="vehicle-type">
+                        <option value="non-electric">Non-Electric</option>
+                        <option value="electric" style="color: green;">Electric</option>
+                    </select>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <div class="image-container">
+            <img src="C:\Users\iamno\Downloads\parking sample.jpg" alt="Automated Car Parking System">
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('login-form');
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // prevent default form submission
+    window.location.href = 'home.html'; // redirect to home page
+});
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const mobileNumber = document.getElementById('mobile-number').value;
+    const vehicleNumber = document.getElementById('vehicle-number').value;
+    const vehicleType = document.getElementById('vehicle-type').value;
+
+    if (name === '' || mobileNumber === '' || vehicleNumber === '' || vehicleType === '') {
+        alert('Please fill in all fields');
+        return;
+    }
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name,
+            mobileNumber,
+            vehicleNumber,
+            vehicleType
+        })
+    })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error(error));
+});
+    </script>
+</body>
+</html>
